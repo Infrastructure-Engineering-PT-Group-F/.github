@@ -1,0 +1,43 @@
+name: Feature
+description: Plan a new feature or platform capability
+title: "feat: "
+labels: ["feature"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why is this change needed?
+      placeholder: Explain the project or platform context.
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What should be implemented?
+      placeholder: List the concrete tasks included in this issue.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What must be true for this issue to be done?
+      value: |
+        - [ ] 
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+
+  - type: textarea
+    id: related
+    attributes:
+      label: Related Repositories / Components
+      description: Which repositories or platform components are affected?
+      placeholder: infrastructure, gitops, backend, frontend, first-cluster
+    validations:
+      required: false
