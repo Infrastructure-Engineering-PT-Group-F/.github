@@ -1,0 +1,62 @@
+name: Security / Operations
+description: Track security, operations, or platform reliability work
+title: "security: "
+labels: ["security", "operations"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why is this security or operations work needed?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Multi-tenancy
+        - Network policies
+        - Resource management
+        - Secrets management
+        - IAM / RBAC
+        - GitOps operations
+        - Monitoring
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What should be implemented, reviewed, or documented?
+      value: |
+        - [ ] 
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation
+      description: How can this be checked?
+      placeholder: kubectl commands, GitOps sync status, screenshots, logs, review notes
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - [ ] The change follows security best practices.
+        - [ ] No plaintext secrets are introduced.
+        - [ ] The result is documented where needed.
+        - [ ] Validation evidence is added to the issue or PR.
+    validations:
+      required: true

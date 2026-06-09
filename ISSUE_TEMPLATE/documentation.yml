@@ -1,0 +1,44 @@
+name: Documentation
+description: Add or improve project documentation
+title: "docs: "
+labels: ["documentation"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why is this documentation needed?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What documentation should be created or updated?
+      value: |
+        - [ ] 
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+
+  - type: textarea
+    id: target
+    attributes:
+      label: Target Location
+      description: Where should the documentation live?
+      placeholder: README.md, docs/architecture.md, docs/operations/runbook.md
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - [ ] Documentation is clear and project-specific.
+        - [ ] Relevant repositories or components are linked.
+        - [ ] The documentation is reachable from the repository README or central organization README.
+    validations:
+      required: true
