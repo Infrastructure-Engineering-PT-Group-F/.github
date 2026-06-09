@@ -1,0 +1,47 @@
+name: Architecture Decision
+description: Document a relevant technical or architectural decision
+title: "docs: decide "
+labels: ["architecture", "documentation"]
+body:
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decision
+      description: What decision needs to be made or documented?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why is this decision relevant?
+    validations:
+      required: true
+
+  - type: textarea
+    id: options
+    attributes:
+      label: Considered Options
+      value: |
+        - Option 1:
+        - Option 2:
+        - Option 3:
+    validations:
+      required: false
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What option was selected and why?
+    validations:
+      required: true
+
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Consequences
+      description: What are the consequences, trade-offs, or limitations?
+    validations:
+      required: false
