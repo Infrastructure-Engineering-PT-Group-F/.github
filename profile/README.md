@@ -1,52 +1,54 @@
 # 🚀 Infrastructure Engineering Project - Group F
 
-Group F's multi-tenant Kubernetes SaaS platform for the Infrastructure Engineering (PT) course at Hochschule Burgenland. The platform runs a 3-tier weather application on Google Kubernetes Engine (GKE). It is provisioned with Terraform (IaC), delivered with ArgoCD (GitOps), and offered as an isolated per-tenant instance through Crossplane.
+Welcome to the GitHub organization for **Group F**'s Infrastructure Engineering project at Hochschule Burgenland. This organization contains the Kubernetes platform, GitOps service catalog, and 3-tier weather application used for the course assignment.
 
-**Project phase:** Day 1 (Foundation and Bootstrap) complete. Day 2 (Service Catalog and Application) in progress.
-
-**Deadline:** `2026-06-26 14:00 CEST`. No changes are permitted afterward.
-
----
+The platform goal is to provision a managed Kubernetes environment with Terraform, reconcile platform and tenant resources through ArgoCD, and provide tenant-specific application instances through Crossplane, Helm charts, and secure secret delivery.
 
 ## 🛠️ Project Repositories
 
-Each repository carries its own detailed documentation. For the purpose, visibility, ownership, and assignment area of every repository, see [Repository Overview and Ownership](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/blob/main/docs/repository-overview.md).
+| Repository | Visibility | Purpose | Key Documentation |
+| :--- | :--- | :--- | :--- |
+| [.github](https://github.com/Infrastructure-Engineering-PT-Group-F/.github) | Public | Organization profile, shared issue templates, PR template, and central project overview. | [Organization README](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/blob/main/profile/README.md), [PR template](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/blob/main/.github/pull_request_template.md) |
+| [infrastructure](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure) | Public | Terraform IaC for VPC, GKE, IAM / Workload Identity, remote state, and initial ArgoCD bootstrap. | [README](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/blob/main/README.md), [Access model](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/blob/main/docs/access-model.md), [Bootstrap exceptions](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/blob/main/docs/bootstrap-exceptions.md), [Bootstrap module](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/blob/main/bootstrap/README.md), [Platform module](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/blob/main/platform/README.md) |
+| [gitops](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops) | Public | ArgoCD-reconciled platform add-ons, Crossplane catalog definitions, and tenant resources. | [README](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/blob/main/README.md), [Tenant onboarding](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/blob/main/tenants/README.md), [Secret handling](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/blob/main/docs/security/secret-handling.md), [Monitoring approach](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/blob/main/docs/monitoring/basic-monitoring-approach.md), [Contributing](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/blob/main/CONTRIBUTING.md) |
+| [backend](https://github.com/Infrastructure-Engineering-PT-Group-F/backend) | Public | Java / Spring Boot weather API, database migrations, backend Helm chart, and public backend container image. | [README](https://github.com/Infrastructure-Engineering-PT-Group-F/backend/blob/main/README.md), [OpenAPI spec](https://github.com/Infrastructure-Engineering-PT-Group-F/backend/blob/main/docs/openapi.yaml), [Backend Helm chart](https://github.com/Infrastructure-Engineering-PT-Group-F/backend/tree/main/charts/weather-app-backend), [Contributing](https://github.com/Infrastructure-Engineering-PT-Group-F/backend/blob/main/CONTRIBUTING.md) |
+| [frontend](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend) | Private | Vue / Quasar single-page weather application, frontend Helm chart, runtime configuration, and private frontend container image. | [README](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend/blob/main/README.md), [Frontend Helm chart](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend/tree/main/charts/weather-app-frontend), [Runtime configuration](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend#runtime-configuration-dynamic-loading), [Private image-pull contract](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend#private-ghcr-image-pull-secret-contract), [Contributing](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend/blob/main/CONTRIBUTING.md) |
 
-| Repository | Description |
-| :--- | :--- |
-| [`infrastructure`](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure) | Terraform IaC for the VPC, GKE cluster, IAM and Workload Identity, and the ArgoCD bootstrap. |
-| [`gitops`](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops) | ArgoCD applications, the Crossplane service catalog (XRDs and Compositions), and per-tenant resources. |
-| [`backend`](https://github.com/Infrastructure-Engineering-PT-Group-F/backend) | Weather App REST API (Spring Boot) with a public container image and CI. |
-| [`frontend`](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend) | Weather App single-page application (Vite). The repository and its container image are private. |
-| [`.github`](https://github.com/Infrastructure-Engineering-PT-Group-F/.github) | This repository. Organization landing page, shared documentation, and issue and pull request templates. |
+## 🏗️ Architecture Overview
 
----
+The platform is split across infrastructure, GitOps, and application repositories:
 
-## 👥 Team and Responsibilities
+| Source | Provides | Consumed By |
+| :--- | :--- | :--- |
+| `infrastructure` | Terraform-managed GCP/GKE infrastructure, IAM, Workload Identity, remote state, and initial ArgoCD bootstrap. | GKE platform |
+| `gitops` | ArgoCD Applications, Crossplane catalog resources, platform add-ons, and tenant declarations. | ArgoCD / Crossplane in the cluster |
+| `backend` | Spring Boot API image and Helm chart for the weather backend. | GitOps tenant deployments |
+| `frontend` | Vue / Quasar SPA image and Helm chart for the weather frontend. | GitOps tenant deployments |
+| GKE platform | ArgoCD, Crossplane, ESO, and platform add-ons. | Tenant namespaces |
+| Tenant namespace | Frontend, backend, database binding, runtime secrets, and tenant-specific configuration. | Application users |
 
-| Member | Main responsibilities |
-| :--- | :--- |
-| Max (`@2510781020`) | Documentation and software management hygiene, the `.github` organization repository, co-owner of `gitops`. |
-| Ajdin (`@ajdinvelic11`) | Infrastructure bootstrap with Terraform, GKE, IAM, and Workload Identity in `infrastructure`. |
-| Ralf (`@R41f-K`) | GitOps delivery and security, co-owner of `gitops`. |
-| Julian (`@hochschule-jz`) | The `backend` and `frontend` applications, co-owner of `gitops` for application management and Crossplane. |
+High-level flow:
 
-The presentation pillar is graded equally for all team members.
+`infrastructure` -> GKE platform -> ArgoCD -> `gitops` -> Crossplane / Helm -> tenant namespace
 
----
+## 👥 Team Responsibilities
 
-## 📚 Key Documentation
+| Area | Main Responsibilities | Primary Repositories |
+| :--- | :--- | :--- |
+| Platform infrastructure | Terraform modules, GCP/GKE resources, IAM, Workload Identity, remote state, bootstrap exceptions, lecturer access. | `infrastructure` |
+| GitOps and service catalog | ArgoCD application structure, Crossplane XRDs and Compositions, tenant resources, platform add-ons. | `gitops` |
+| Secret management and security | External Secrets Operator design, tenant runtime secrets, private GHCR image-pull flow, network policies, resource boundaries. | `gitops`, `frontend`, `backend`, `infrastructure` |
+| Application backend | Weather REST API, database profile, Flyway migrations, backend Helm chart, public backend image publishing. | `backend` |
+| Application frontend | Vue / Quasar SPA, runtime configuration, frontend Helm chart, private frontend image publishing. | `frontend` |
+| Documentation and delivery | Organization landing page, contribution workflow, final demo storyline, AI usage documentation, capacity/cost evidence. | `.github`, `infrastructure`, `gitops` |
 
-| Topic | Location |
-| :--- | :--- |
-| Repository overview and ownership | [`.github/docs/repository-overview.md`](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/blob/main/docs/repository-overview.md) |
-| Contribution workflow | [`.github/CONTRIBUTING.md`](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/blob/main/CONTRIBUTING.md) |
-| Access and permission model | [`infrastructure/docs/access-model.md`](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/blob/main/docs/access-model.md) |
-| Secret handling architecture | [`gitops/docs/security/secret-handling.md`](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/blob/main/docs/security/secret-handling.md) |
-| Tenant onboarding | [`gitops/tenants/README.md`](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/blob/main/tenants/README.md) |
-| Backend API (OpenAPI) | [`backend/docs/openapi.yaml`](https://github.com/Infrastructure-Engineering-PT-Group-F/backend/blob/main/docs/openapi.yaml) |
+## ✏️ Contribution Workflow
 
----
+- Track planned work in GitHub issues.
+- Open pull requests for changes before merging into a main branch.
+- Use Conventional Commit messages and reference the related issue where useful, for example `docs: #1 update organization landing page`.
+- Keep secrets, tokens, kubeconfigs, private keys, and `.env` files out of every repository.
+- Prefer repository-specific documentation for implementation details and link it from this landing page.
 
 ## 📋 Assignment Details
 
