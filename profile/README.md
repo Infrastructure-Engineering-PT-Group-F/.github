@@ -49,6 +49,7 @@ High-level flow:
 - Use Conventional Commit messages and reference the related issue where useful, for example `docs: #1 update organization landing page`.
 - Keep secrets, tokens, kubeconfigs, private keys, and `.env` files out of every repository.
 - Prefer repository-specific documentation for implementation details and link it from this landing page.
+- Follow the [shared contribution workflow](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/blob/main/docs/contribution-workflow.md) for issue placement, branch naming, pull request review, and Definition of Done rules.
 
 ## 📋 Assignment Details
 
