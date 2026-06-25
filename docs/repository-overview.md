@@ -57,8 +57,8 @@ commit and pull request conventions across all repositories.
 
 - **Purpose:** The organization entry point and shared GitHub configuration
 - **Typical contents:** The organization profile README, the shared issue and
-  pull request templates, the contribution workflow and cross-repository
-  documentation
+  pull request templates, the contribution workflow, final demo storyline
+  options and cross-repository documentation
 
 ## Where to create issues
 
