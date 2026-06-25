@@ -9,7 +9,7 @@ the Group F organization. This is the detailed companion to the
 | Repository                                                                                  | Visibility | Lead                                  | Assignment area                          |
 | :------------------------------------------------------------------------------------------ | :--------- | :------------------------------------ | :--------------------------------------- |
 | [`infrastructure`](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure) | public     | Ajdin (`@ajdinvelic11`)               | Infrastructure Bootstrap                 |
-| [`gitops`](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops)                 | public     | Ralf (`@R41f-K`), Max (`@2510781020`) | GitOps, Application Management, Security |
+| [`gitops`](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops)                 | public     | Ralf (`@R41f-K`), Julian (`@hochschule-jz`), Max (`@2510781020`) | GitOps, Application Management, Security |
 | [`backend`](https://github.com/Infrastructure-Engineering-PT-Group-F/backend)               | public     | Julian (`@hochschule-jz`)             | Application Management                   |
 | [`frontend`](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend)             | private    | Julian (`@hochschule-jz`)             | Application Management                   |
 | [`.github`](https://github.com/Infrastructure-Engineering-PT-Group-F/.github)               | public     | Max (`@2510781020`)                   | Documentation & Hygiene                  |
