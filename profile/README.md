@@ -40,7 +40,7 @@ High-level flow:
 | Secret management and security | External Secrets Operator design, tenant runtime secrets, private GHCR image-pull flow, network policies, resource boundaries. | `gitops`, `frontend`, `backend`, `infrastructure` |
 | Application backend | Weather REST API, database profile, Flyway migrations, backend Helm chart, public backend image publishing. | `backend` |
 | Application frontend | Vue / Quasar SPA, runtime configuration, frontend Helm chart, private frontend image publishing. | `frontend` |
-| Documentation and delivery | Organization landing page, contribution workflow, final demo storyline, AI usage documentation, capacity/cost evidence. | `.github`, `infrastructure`, `gitops` |
+| Documentation and delivery | Organization landing page, contribution workflow, final demo storyline, [AI usage documentation](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/issues/8), capacity/cost evidence. | `.github`, `infrastructure`, `gitops` |
 
 ## ✏️ Contribution Workflow
 
@@ -323,6 +323,8 @@ The following remarks must be observed:
 - Treat any outcome of such tools with caution, apply your judgment, and use it as an
 inspiration for performing your work or supporting you in troubleshooting issues.
 - Include your evaluation and usage of the tools.
+
+Our team's per-member documentation and evaluation of generative AI tool usage is collected in [the central AI usage issue](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/issues/8).
 
 ### Code of Conduct / Plagiarism
 As always, you must follow the Hochschule Burgenland code of conduct.
