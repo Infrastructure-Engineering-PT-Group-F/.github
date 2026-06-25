@@ -16,7 +16,9 @@ the Group F organization. This is the detailed companion to the
 
 The `frontend` repository is private because the assignment requires the
 frontend container image to be privately accessible. All other repositories are
-public.
+public. Use the
+[shared contribution workflow](contribution-workflow.md) for issue, branch,
+commit and pull request conventions across all repositories.
 
 ## Repository details
 
@@ -63,7 +65,9 @@ public.
 Create each issue in the repository where the main change will happen. A
 Terraform change belongs in `infrastructure`, a tenant or ArgoCD change in
 `gitops`, a backend API change in `backend`, a frontend change in `frontend` and
-organization-level documentation in `.github`.
+organization-level documentation in `.github`. See the
+[contribution workflow](contribution-workflow.md) for branch naming, commit
+message, pull request and Definition of Done rules.
 
 ## Tracking cross-repository work
 
