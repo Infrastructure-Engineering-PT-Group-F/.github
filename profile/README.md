@@ -1,19 +1,50 @@
 # 🚀 Infrastructure Engineering Project - Group F
 
-Welcome to the GitHub Organization for **Group F**'s Infrastructure Engineering project. This organization hosts the complete platform implementation based on Kubernetes, GitOps, and Infrastructure as Code (IaC) principles.
+Group F's multi-tenant Kubernetes SaaS platform for the Infrastructure Engineering (PT) course at Hochschule Burgenland. The platform runs a 3-tier weather application on Google Kubernetes Engine (GKE). It is provisioned with Terraform (IaC), delivered with ArgoCD (GitOps), and offered as an isolated per-tenant instance through Crossplane.
+
+**Project phase:** Day 1 (Foundation and Bootstrap) complete. Day 2 (Service Catalog and Application) in progress.
+
+**Deadline:** `2026-06-26 14:00 CEST`. No changes are permitted afterward.
 
 ---
 
 ## 🛠️ Project Repositories
 
-Below you will find the core components of our platform. Each repository contains its own specific documentation and implementation details.
+Each repository carries its own detailed documentation. For the purpose, visibility, ownership, and assignment area of every repository, see [Repository Overview and Ownership](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/blob/main/docs/repository-overview.md).
 
-| Repository | Description | Documentation |
-| :--- | :--- | :--- |
-| [**📁 infrastructure**](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure) | Core Kubernetes infrastructure and cloud resources (IaC). | [📖 README](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/blob/main/README.md) |
-| [**📁 gitops**](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops) | GitOps configurations and application deployments. | [📖 README](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/blob/main/README.md) |
-| [**📁 backend**](https://github.com/Infrastructure-Engineering-PT-Group-F/backend) | 3-tier application backend (REST API). | [📖 README](https://github.com/Infrastructure-Engineering-PT-Group-F/backend/blob/main/README.md) |
-| [**📁 frontend**](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend) | 3-tier application frontend (SPA). | [📖 README](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend/blob/main/README.md) |
+| Repository | Description |
+| :--- | :--- |
+| [`infrastructure`](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure) | Terraform IaC for the VPC, GKE cluster, IAM and Workload Identity, and the ArgoCD bootstrap. |
+| [`gitops`](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops) | ArgoCD applications, the Crossplane service catalog (XRDs and Compositions), and per-tenant resources. |
+| [`backend`](https://github.com/Infrastructure-Engineering-PT-Group-F/backend) | Weather App REST API (Spring Boot) with a public container image and CI. |
+| [`frontend`](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend) | Weather App single-page application (Vite). The repository and its container image are private. |
+| [`.github`](https://github.com/Infrastructure-Engineering-PT-Group-F/.github) | This repository. Organization landing page, shared documentation, and issue and pull request templates. |
+
+---
+
+## 👥 Team and Responsibilities
+
+| Member | Main responsibilities |
+| :--- | :--- |
+| Max (`@2510781020`) | Documentation and software management hygiene, the `.github` organization repository, co-owner of `gitops`. |
+| Ajdin (`@ajdinvelic11`) | Infrastructure bootstrap with Terraform, GKE, IAM, and Workload Identity in `infrastructure`. |
+| Ralf (`@R41f-K`) | GitOps delivery and security, co-owner of `gitops`. |
+| Julian (`@hochschule-jz`) | The `backend` and `frontend` applications, co-owner of `gitops` for application management and Crossplane. |
+
+The presentation pillar is graded equally for all team members.
+
+---
+
+## 📚 Key Documentation
+
+| Topic | Location |
+| :--- | :--- |
+| Repository overview and ownership | [`.github/docs/repository-overview.md`](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/blob/main/docs/repository-overview.md) |
+| Contribution workflow | [`.github/CONTRIBUTING.md`](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/blob/main/CONTRIBUTING.md) |
+| Access and permission model | [`infrastructure/docs/access-model.md`](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/blob/main/docs/access-model.md) |
+| Secret handling architecture | [`gitops/docs/security/secret-handling.md`](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/blob/main/docs/security/secret-handling.md) |
+| Tenant onboarding | [`gitops/tenants/README.md`](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/blob/main/tenants/README.md) |
+| Backend API (OpenAPI) | [`backend/docs/openapi.yaml`](https://github.com/Infrastructure-Engineering-PT-Group-F/backend/blob/main/docs/openapi.yaml) |
 
 ---
 
@@ -303,6 +334,3 @@ Moodle and in the following lecture.
 Derivations for specific parts will be mentioned in the assignment document accordingly.
 
 </details>
-
----
-Generated by Antigravity with gemini-3-flash
