@@ -36,7 +36,8 @@ presentation topic, but it is not the optional deep dive.
    `gitops` commit or pull request -> ArgoCD Application -> Crossplane tenant
    composite -> namespace, database binding, application Helm releases,
    ExternalSecret resources and HTTPRoute.
-5. Show the resulting tenant namespace resources and application endpoint.
+5. Show the resulting tenant namespace resources and the live validation
+   endpoint at `https://validation.gcp.ajdininfrastructure.lol`.
 6. Show one code view during the demo, preferably the tenant claim or
    composition, to satisfy the assignment requirement to show code.
 7. Confirm the staging tenant or validation checklist used before rolling out
@@ -73,26 +74,26 @@ presentation topic, but it is not the optional deep dive.
 
 ## Current preparation context
 
-This context was checked on 2026-06-25 and should be refreshed before the final
+This context was checked on 2026-06-26 and should be refreshed before the final
 presentation.
 
 | Repository | Relevant state for the storyline |
 | :--- | :--- |
 | `.github` | Issue [#5](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/issues/5) tracks this storyline. Issue [#8](https://github.com/Infrastructure-Engineering-PT-Group-F/.github/issues/8) tracks generative AI usage documentation. |
-| `infrastructure` | Issue [#14](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/issues/14) tracks the initial GCP capacity and cost estimate. Issues [#6](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/issues/6) and [#12](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/issues/12) track cost monitoring and AI tool documentation. Recent commits cover Secret Manager and ESO IAM work. The README, access model, bootstrap exceptions and Terraform module READMEs are the main sources for the bootstrap deep dive. |
-| `gitops` | Issue [#39](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/issues/39) and PR [#75](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/pull/75) are central for tenant provisioning. Issue [#80](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/issues/80) and PR [#81](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/pull/81) track Gateway ArgoCD sync. Issues [#4](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/issues/4), [#6](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/issues/6), [#7](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/issues/7), [#9](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/issues/9), [#10](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/issues/10), [#11](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/issues/11) and [#13](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/issues/13) support the security, onboarding, runbook, staging and monitoring parts. |
-| `backend` | PR [#34](https://github.com/Infrastructure-Engineering-PT-Group-F/backend/pull/34) prepares release 1.4.0. Issue [#33](https://github.com/Infrastructure-Engineering-PT-Group-F/backend/issues/33) tracks chart/appVersion synchronization. Recent commits include Gateway API HTTPRoute chart work. |
+| `infrastructure` | Issue [#14](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/issues/14) tracks the initial GCP capacity and cost estimate. Issues [#6](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/issues/6) and [#12](https://github.com/Infrastructure-Engineering-PT-Group-F/infrastructure/issues/12) track cost monitoring and AI tool documentation. The README, access model, bootstrap exceptions and Terraform module READMEs are the main sources for the bootstrap deep dive. |
+| `gitops` | Tenant provisioning is now represented by the completed XTenant work in issue [#83](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/issues/83), PR [#90](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/pull/90) and issue [#97](https://github.com/Infrastructure-Engineering-PT-Group-F/gitops/issues/97). Use the current tenant manifests and composition code for the demo instead of older planning references. |
+| `backend` | The backend chart and image are available for the validation tenant, including the released 1.4.0 backend line and Gateway API HTTPRoute chart work. |
 | `frontend` | Issue [#34](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend/issues/34) tracks private GHCR image-pull validation. Issue [#23](https://github.com/Infrastructure-Engineering-PT-Group-F/frontend/issues/23) tracks the optional cloud-storage SPA hosting bonus. |
 
 ## Open preparation tasks
 
-- Refresh the issue and PR state shortly before presenting, especially the
-  `gitops` tenant provisioning and Gateway sync work.
+- Refresh the tenant status shortly before presenting, especially the live
+  validation endpoint and ArgoCD/Crossplane reconciliation state.
 - Fill in actual cost numbers and screenshots from the cost planning and cost
   monitoring issues.
 - Decide whether the live demo creates a brand-new tenant or walks through a
   prepared tenant pull request.
-- Confirm the exact tenant name, endpoint and staging tenant used in the demo.
+- Confirm the exact tenant name and staging tenant used in the demo.
 - Confirm the exact Terraform files, bootstrap commands or screenshots to show.
 - Prepare one fallback screenshot set for ArgoCD, Crossplane, tenant namespace
   resources, the application endpoint and the bootstrap process.
