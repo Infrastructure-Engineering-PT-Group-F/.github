@@ -31,6 +31,57 @@ High-level flow:
 
 `infrastructure` -> GKE platform -> ArgoCD -> `gitops` -> Crossplane / Helm -> tenant namespace
 
+```mermaid
+flowchart TB
+    user["User / Browser"]
+    repo["gitops repo<br/>(desired state)"]
+
+    subgraph gke["GKE cluster — provisioned by Terraform"]
+        direction TB
+        argocd["ArgoCD · App-of-Apps<br/>+ per-tenant ApplicationSet"]
+        subgraph platform["Platform add-ons"]
+            direction LR
+            eg["Envoy Gateway"]
+            cm["cert-manager<br/>(ACME / DNS-01)"]
+            edns["external-dns"]
+            eso["External Secrets"]
+            xp["Crossplane"]
+        end
+        gw["Shared Gateway<br/>HTTPS · wildcard TLS"]
+        subgraph tenant["Tenant namespace (one per tenant)"]
+            direction LR
+            fe["frontend SPA"]
+            be["backend REST<br/>metrics :8081 (internal)"]
+            ts["ESO secrets"]
+            dbc["XTenant claim →<br/>SQLInstance"]
+            guard["NetworkPolicy ·<br/>ResourceQuota / LimitRange"]
+        end
+    end
+
+    subgraph gcp["GCP managed services"]
+        direction LR
+        dns["Cloud DNS"]
+        sm["Secret Manager"]
+        sql["Cloud SQL<br/>(per tenant)"]
+        gmp["Managed Prometheus<br/>(managed collection)"]
+        mon["Cloud Monitoring<br/>(dashboard · IaC)"]
+    end
+
+    repo -->|sync| argocd
+    user -->|HTTPS| gw
+    argocd --> platform
+    argocd --> gw
+    argocd --> tenant
+    gw --> tenant
+    xp -->|provisions| tenant
+    be --> sql
+    gmp -.->|scrape| be
+    gmp --> mon
+    edns --> dns
+    eso --> sm
+    xp --> sql
+```
+
 ## 👥 Team Responsibilities
 
 | Area | Main Responsibilities | Primary Repositories |
